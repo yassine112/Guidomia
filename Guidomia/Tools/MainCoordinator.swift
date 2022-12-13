@@ -16,7 +16,11 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
+        let manager     = CarsManager(loader: JSONDataLoader())
+        let viewModel   = CarsViewModel(manager: manager)
+        let controller  = CarsListViewController(viewModel: viewModel, coordinator: self)
 
+        navigationController.pushViewController(controller, animated: false)
     }
     
 }

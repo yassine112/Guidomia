@@ -19,6 +19,10 @@
 		D762FA352948B22C008C9E56 /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = D762FA342948B22C008C9E56 /* car_list.json */; };
 		D762FA372948B2DD008C9E56 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA362948B2DD008C9E56 /* Car.swift */; };
 		D762FA392948B40F008C9E56 /* CarsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA382948B40E008C9E56 /* CarsManager.swift */; };
+		D762FA402948C283008C9E56 /* CarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA3F2948C283008C9E56 /* CarsViewModel.swift */; };
+		D762FA432948C2A0008C9E56 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA412948C2A0008C9E56 /* CarsListViewController.swift */; };
+		D762FA442948C2A0008C9E56 /* CarsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D762FA422948C2A0008C9E56 /* CarsListViewController.xib */; };
+		D762FA462948C552008C9E56 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA452948C552008C9E56 /* DataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		D762FA342948B22C008C9E56 /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 		D762FA362948B2DD008C9E56 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		D762FA382948B40E008C9E56 /* CarsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsManager.swift; sourceTree = "<group>"; };
+		D762FA3F2948C283008C9E56 /* CarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewModel.swift; sourceTree = "<group>"; };
+		D762FA412948C2A0008C9E56 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
+		D762FA422948C2A0008C9E56 /* CarsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarsListViewController.xib; sourceTree = "<group>"; };
+		D762FA452948C552008C9E56 /* DataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +147,7 @@
 		D762FA2D29489A42008C9E56 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D762FA452948C552008C9E56 /* DataLoader.swift */,
 				D762FA2B2948996B008C9E56 /* CoordinatorProtocol.swift */,
 				D762FA2929489940008C9E56 /* MainCoordinator.swift */,
 			);
@@ -148,7 +157,7 @@
 		D762FA2E29489AB6008C9E56 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D762FA3129489B6C008C9E56 /* Home */,
+				D762FA3129489B6C008C9E56 /* Cars list */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -156,6 +165,7 @@
 		D762FA2F29489B19008C9E56 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D762FA3F2948C283008C9E56 /* CarsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -169,11 +179,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D762FA3129489B6C008C9E56 /* Home */ = {
+		D762FA3129489B6C008C9E56 /* Cars list */ = {
 			isa = PBXGroup;
 			children = (
+				D762FA412948C2A0008C9E56 /* CarsListViewController.swift */,
+				D762FA422948C2A0008C9E56 /* CarsListViewController.xib */,
 			);
-			path = Home;
+			path = "Cars list";
 			sourceTree = "<group>";
 		};
 		D762FA322948B183008C9E56 /* Entities */ = {
@@ -300,6 +312,7 @@
 				D762FA02294893C7008C9E56 /* Assets.xcassets in Resources */,
 				D762FA352948B22C008C9E56 /* car_list.json in Resources */,
 				D762FA00294893C5008C9E56 /* Main.storyboard in Resources */,
+				D762FA442948C2A0008C9E56 /* CarsListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,8 +337,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D762FA432948C2A0008C9E56 /* CarsListViewController.swift in Sources */,
+				D762FA402948C283008C9E56 /* CarsViewModel.swift in Sources */,
 				D762FA2A29489940008C9E56 /* MainCoordinator.swift in Sources */,
 				D762FA2C2948996B008C9E56 /* CoordinatorProtocol.swift in Sources */,
+				D762FA462948C552008C9E56 /* DataLoader.swift in Sources */,
 				D762FA372948B2DD008C9E56 /* Car.swift in Sources */,
 				D762F9F9294893C5008C9E56 /* AppDelegate.swift in Sources */,
 				D762FA392948B40F008C9E56 /* CarsManager.swift in Sources */,

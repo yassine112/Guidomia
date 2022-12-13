@@ -8,25 +8,33 @@
 import Foundation
 
 protocol CarsManagerProtocol {
-    func getCars() -> [Car]?
+    func getCars(completion: @escaping (Result<[Car], Error>) -> Void)
 }
 
 class CarsManager: CarsManagerProtocol {
-    final let fileName = "car_list"
+    let fileName = "car_list"
+    let loader: DataLoaderProtocol
     
-    func getCars() -> [Car]? {
+    init(loader: DataLoaderProtocol) {
+        self.loader = loader
+    }
+    
+    func getCars(completion: @escaping (Result<[Car], Error>) -> Void) {
         
-        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-                let carList = try JSONDecoder().decode([Car].self, from: data)
-                return carList
-            } catch let error {
-                print(error.localizedDescription)
+        loader.load(fileName: fileName) { result in
+            
+            switch result {
+                case .success(let data):
+                    do {
+                        let cars = try JSONDecoder().decode([Car].self, from: data)
+                        completion(.success(cars))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let err):
+                    completion(.failure(err))
             }
         }
-        
-        return nil
     }
     
 }
