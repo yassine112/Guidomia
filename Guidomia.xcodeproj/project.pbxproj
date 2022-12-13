@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D762F9F9294893C5008C9E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762F9F8294893C5008C9E56 /* AppDelegate.swift */; };
-		D762F9FD294893C5008C9E56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762F9FC294893C5008C9E56 /* ViewController.swift */; };
 		D762FA00294893C5008C9E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D762F9FE294893C5008C9E56 /* Main.storyboard */; };
 		D762FA02294893C7008C9E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D762FA01294893C7008C9E56 /* Assets.xcassets */; };
 		D762FA05294893C7008C9E56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D762FA03294893C7008C9E56 /* LaunchScreen.storyboard */; };
 		D762FA10294893C8008C9E56 /* GuidomiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA0F294893C8008C9E56 /* GuidomiaTests.swift */; };
 		D762FA1A294893C8008C9E56 /* GuidomiaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA19294893C8008C9E56 /* GuidomiaUITests.swift */; };
 		D762FA1C294893C8008C9E56 /* GuidomiaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA1B294893C8008C9E56 /* GuidomiaUITestsLaunchTests.swift */; };
+		D762FA2A29489940008C9E56 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA2929489940008C9E56 /* MainCoordinator.swift */; };
+		D762FA2C2948996B008C9E56 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762FA2B2948996B008C9E56 /* CoordinatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,6 @@
 /* Begin PBXFileReference section */
 		D762F9F5294893C5008C9E56 /* Guidomia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guidomia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D762F9F8294893C5008C9E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D762F9FC294893C5008C9E56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D762F9FF294893C5008C9E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D762FA01294893C7008C9E56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D762FA04294893C7008C9E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		D762FA15294893C8008C9E56 /* GuidomiaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GuidomiaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D762FA19294893C8008C9E56 /* GuidomiaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaUITests.swift; sourceTree = "<group>"; };
 		D762FA1B294893C8008C9E56 /* GuidomiaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidomiaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D762FA2929489940008C9E56 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		D762FA2B2948996B008C9E56 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +100,13 @@
 			isa = PBXGroup;
 			children = (
 				D762F9F8294893C5008C9E56 /* AppDelegate.swift */,
-				D762F9FC294893C5008C9E56 /* ViewController.swift */,
+				D762FA2E29489AB6008C9E56 /* Controllers */,
+				D762FA2F29489B19008C9E56 /* ViewModels */,
+				D762FA3029489B42008C9E56 /* Models */,
+				D762FA2D29489A42008C9E56 /* Tools */,
 				D762F9FE294893C5008C9E56 /* Main.storyboard */,
-				D762FA01294893C7008C9E56 /* Assets.xcassets */,
 				D762FA03294893C7008C9E56 /* LaunchScreen.storyboard */,
+				D762FA01294893C7008C9E56 /* Assets.xcassets */,
 				D762FA06294893C7008C9E56 /* Info.plist */,
 			);
 			path = Guidomia;
@@ -122,6 +127,44 @@
 				D762FA1B294893C8008C9E56 /* GuidomiaUITestsLaunchTests.swift */,
 			);
 			path = GuidomiaUITests;
+			sourceTree = "<group>";
+		};
+		D762FA2D29489A42008C9E56 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D762FA2B2948996B008C9E56 /* CoordinatorProtocol.swift */,
+				D762FA2929489940008C9E56 /* MainCoordinator.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D762FA2E29489AB6008C9E56 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D762FA3129489B6C008C9E56 /* Home */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D762FA2F29489B19008C9E56 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D762FA3029489B42008C9E56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D762FA3129489B6C008C9E56 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +298,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D762F9FD294893C5008C9E56 /* ViewController.swift in Sources */,
+				D762FA2A29489940008C9E56 /* MainCoordinator.swift in Sources */,
+				D762FA2C2948996B008C9E56 /* CoordinatorProtocol.swift in Sources */,
 				D762F9F9294893C5008C9E56 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
