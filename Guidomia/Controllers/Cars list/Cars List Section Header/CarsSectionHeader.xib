@@ -97,17 +97,30 @@
                         <constraint firstItem="7uS-8c-py6" firstAttribute="leading" secondItem="duT-uM-iPd" secondAttribute="leading" constant="20" id="u5L-jt-YzV"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iZ-Qr-0ox">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="153"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
+                    <connections>
+                        <action selector="didTapHeader:" destination="sJg-fN-Blb" eventType="touchUpInside" id="iM9-ax-bkl"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="tp5-CS-zjX"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="duT-uM-iPd" firstAttribute="top" secondItem="sJg-fN-Blb" secondAttribute="top" id="BPb-iu-42R"/>
+                <constraint firstItem="0iZ-Qr-0ox" firstAttribute="top" secondItem="duT-uM-iPd" secondAttribute="top" id="DxR-7a-EtU"/>
                 <constraint firstItem="tp5-CS-zjX" firstAttribute="bottom" secondItem="duT-uM-iPd" secondAttribute="bottom" id="PDp-ve-u1G"/>
+                <constraint firstItem="0iZ-Qr-0ox" firstAttribute="trailing" secondItem="duT-uM-iPd" secondAttribute="trailing" id="Rf2-mh-9pe"/>
                 <constraint firstItem="duT-uM-iPd" firstAttribute="trailing" secondItem="tp5-CS-zjX" secondAttribute="trailing" id="jZ2-NY-QUJ"/>
                 <constraint firstItem="duT-uM-iPd" firstAttribute="leading" secondItem="tp5-CS-zjX" secondAttribute="leading" id="mRl-NL-8wK"/>
+                <constraint firstItem="0iZ-Qr-0ox" firstAttribute="bottom" secondItem="duT-uM-iPd" secondAttribute="bottom" id="ogS-0W-nXi"/>
+                <constraint firstItem="0iZ-Qr-0ox" firstAttribute="leading" secondItem="duT-uM-iPd" secondAttribute="leading" id="xrC-vH-Rve"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="containerView" destination="duT-uM-iPd" id="WO7-MP-Bil"/>
                 <outlet property="imgView" destination="7uS-8c-py6" id="oeW-bg-7Gs"/>
                 <outlet property="priceLbl" destination="gRE-Aq-SsA" id="UCP-7G-eqz"/>
                 <outlet property="starImg1" destination="Nik-nJ-BPS" id="JZh-jk-638"/>

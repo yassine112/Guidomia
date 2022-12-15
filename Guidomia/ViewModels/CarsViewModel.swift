@@ -9,9 +9,10 @@ import Foundation
 
 protocol CarsViewModelProtocol {
     var loadDataHandler: () -> Void { get set }
-    var cars: [Car] { get }
+    var cars: [CarViewModel] { get }
     
     func getCarsList()
+    func displayDetail(_ section: Int)
 }
 
 class CarsViewModel: CarsViewModelProtocol {
@@ -19,7 +20,7 @@ class CarsViewModel: CarsViewModelProtocol {
     var loadDataHandler: () -> Void = { }
     
     private let manager: CarsManagerProtocol
-    private(set) var cars: [Car] = []
+    private(set) var cars: [CarViewModel] = []
 
     init(manager: CarsManagerProtocol) {
         self.manager = manager
@@ -31,11 +32,20 @@ class CarsViewModel: CarsViewModelProtocol {
             
             switch result {
             case .success(let cars):
-                self.cars = cars
+                self.cars = cars.map({ CarViewModel(using: $0, isExpanded: false) })
+                self.cars[0].isExpanded = true
                 self.loadDataHandler()
             case .failure(let err):
                 print(err.localizedDescription)
             }
         }
+    }
+    
+    func displayDetail(_ section: Int) {
+        for (index, _) in cars.enumerated() {
+            cars[index].isExpanded = index == section
+        }
+        
+        loadDataHandler()
     }
 }

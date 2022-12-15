@@ -35,6 +35,8 @@ class CarsListViewController: UIViewController {
     }
     
     private func setupView() {
+        title = "Guidomia"
+        
         tableView.delegate      = self
         tableView.dataSource    = self
         
@@ -61,7 +63,7 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        viewModel.cars[section].isExpanded ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +75,9 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionHeader") as? CarsSectionHeader {
-            header.fill(with: viewModel.cars[section])
+            header.fill(with: viewModel.cars[section]) { [weak self] in
+                self?.viewModel.displayDetail(section)
+            }
             return header
         }
         
@@ -86,5 +90,9 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        124
     }
 }

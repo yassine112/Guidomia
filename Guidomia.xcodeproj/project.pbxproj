@@ -29,6 +29,7 @@
 		D7EB99F62949E00400370DE4 /* CarsSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EB99F52949E00400370DE4 /* CarsSectionHeader.xib */; };
 		D7EB99F92949E38C00370DE4 /* CarsSectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB99F82949E38C00370DE4 /* CarsSectionFooter.swift */; };
 		D7EB99FB2949E3A400370DE4 /* CarsSectionFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EB99FA2949E3A400370DE4 /* CarsSectionFooter.xib */; };
+		D7EB99FD294B24F500370DE4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EB99FC294B24F500370DE4 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		D7EB99F52949E00400370DE4 /* CarsSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarsSectionHeader.xib; sourceTree = "<group>"; };
 		D7EB99F82949E38C00370DE4 /* CarsSectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsSectionFooter.swift; sourceTree = "<group>"; };
 		D7EB99FA2949E3A400370DE4 /* CarsSectionFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarsSectionFooter.xib; sourceTree = "<group>"; };
+		D7EB99FC294B24F500370DE4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				D762FA03294893C7008C9E56 /* LaunchScreen.storyboard */,
 				D762FA342948B22C008C9E56 /* car_list.json */,
 				D762FA01294893C7008C9E56 /* Assets.xcassets */,
+				D7EB99FC294B24F500370DE4 /* Colors.xcassets */,
 				D762FA06294893C7008C9E56 /* Info.plist */,
 			);
 			path = Guidomia;
@@ -350,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7EB99FD294B24F500370DE4 /* Colors.xcassets in Resources */,
 				D762FA05294893C7008C9E56 /* LaunchScreen.storyboard in Resources */,
 				D762FA02294893C7008C9E56 /* Assets.xcassets in Resources */,
 				D762FA4B2948D3FD008C9E56 /* CarsListCell.xib in Resources */,

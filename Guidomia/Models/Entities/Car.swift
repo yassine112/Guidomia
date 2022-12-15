@@ -17,3 +17,29 @@ struct Car: Codable {
     let prosList        : [String]
     let rating          : Int
 }
+
+struct CarViewModel {
+    
+    
+    let title           : String
+    let price           : String
+    let imageName       : String
+    let prosList        : [String]
+    let consList        : [String]
+    let rating          : Int
+    
+    var isExpanded      : Bool
+    
+    
+    init(using car: Car, isExpanded: Bool) {
+        self.title      = "\(car.make) \(car.model)"
+        self.price      = "\(car.marketPrice / 1000)k"
+        self.imageName  = car.model
+        self.prosList   = car.prosList
+        self.consList   = car.consList
+        self.rating     = car.rating
+        
+        self.isExpanded = isExpanded
+    }
+    
+}

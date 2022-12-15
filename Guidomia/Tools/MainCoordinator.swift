@@ -13,6 +13,9 @@ class MainCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        
+        
+        setUpNavControllerApparence()
     }
     
     func start() {
@@ -21,6 +24,21 @@ class MainCoordinator: Coordinator {
         let controller  = CarsListViewController(viewModel: viewModel, coordinator: self)
 
         navigationController.pushViewController(controller, animated: false)
+    }
+    
+    
+    private func setUpNavControllerApparence() {
+        navigationController.navigationBar.prefersLargeTitles = true
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "Orange")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        navigationController.navigationBar.tintColor = .white
+        navigationController.navigationBar.standardAppearance = appearance
+        navigationController.navigationBar.compactAppearance = appearance
+        navigationController.navigationBar.scrollEdgeAppearance = appearance
     }
     
 }
