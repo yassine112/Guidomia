@@ -9,6 +9,7 @@ import Foundation
 
 protocol CarsViewModelProtocol {
     var loadDataHandler: () -> Void { get set }
+    var cars: [Car] { get }
     
     func getCarsList()
 }
@@ -18,7 +19,7 @@ class CarsViewModel: CarsViewModelProtocol {
     var loadDataHandler: () -> Void = { }
     
     private let manager: CarsManagerProtocol
-    private var cars: [Car] = []
+    private(set) var cars: [Car] = []
 
     init(manager: CarsManagerProtocol) {
         self.manager = manager

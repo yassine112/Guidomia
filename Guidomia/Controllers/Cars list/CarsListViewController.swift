@@ -38,7 +38,10 @@ class CarsListViewController: UIViewController {
         tableView.delegate      = self
         tableView.dataSource    = self
         
-//        tableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
+        tableView.register(UINib(nibName: "CarsListCell", bundle: nil), forCellReuseIdentifier: "CarsListCell")
+        tableView.register(UINib(nibName: "CarsSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "CarsSectionHeader")
+        tableView.register(UINib(nibName: "CarsSectionFooter", bundle: nil), forHeaderFooterViewReuseIdentifier: "CarsSectionFooter")
+        
     }
     
     private func setupHandlers() {
@@ -53,12 +56,35 @@ class CarsListViewController: UIViewController {
 
 extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.cars.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "CarsListCell", for: indexPath) as? CarsListCell {
+            return  cell
+        }
+        return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionHeader") as? CarsSectionHeader {
+            header.fill(with: viewModel.cars[section])
+            return header
+        }
+        
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionFooter") as? CarsSectionFooter {
+            return footer
+        }
+        
+        return nil
+    }
 }
