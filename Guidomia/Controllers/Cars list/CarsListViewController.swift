@@ -68,6 +68,8 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CarsListCell", for: indexPath) as? CarsListCell {
+            let car = viewModel.cars[indexPath.section]
+            cell.fill(pros: car.prosList, cons: car.consList)
             return  cell
         }
         return UITableViewCell()
@@ -93,6 +95,6 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        124
+        120
     }
 }

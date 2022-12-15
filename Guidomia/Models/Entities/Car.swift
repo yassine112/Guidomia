@@ -24,8 +24,8 @@ struct CarViewModel {
     let title           : String
     let price           : String
     let imageName       : String
-    let prosList        : [String]
-    let consList        : [String]
+    var prosList        : String
+    var consList        : String
     let rating          : Int
     
     var isExpanded      : Bool
@@ -35,9 +35,19 @@ struct CarViewModel {
         self.title      = "\(car.make) \(car.model)"
         self.price      = "\(car.marketPrice / 1000)k"
         self.imageName  = car.model
-        self.prosList   = car.prosList
-        self.consList   = car.consList
         self.rating     = car.rating
+    
+        // TODO: Check back to line, "\n" not working
+        
+        self.prosList = ""
+        for item in car.prosList {
+            self.prosList += " • \(item)\n"
+        }
+        
+        self.consList = ""
+        for item in car.consList {
+            self.consList += " • \(item)\n"
+        }
         
         self.isExpanded = isExpanded
     }

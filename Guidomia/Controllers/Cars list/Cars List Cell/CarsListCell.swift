@@ -9,15 +9,12 @@ import UIKit
 
 class CarsListCell: UITableViewCell {
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var prosBolletPoints: UILabel!
+    @IBOutlet weak var consBolletPoints: UILabel!
+    
+    func fill(pros: String, cons: String) {
+        prosBolletPoints.text = pros
+        consBolletPoints.text = cons
     }
     
 }
