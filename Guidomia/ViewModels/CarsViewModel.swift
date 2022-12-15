@@ -9,10 +9,14 @@ import Foundation
 
 protocol CarsViewModelProtocol {
     var loadDataHandler: () -> Void { get set }
-    var cars: [CarViewModel] { get }
+    var filterdCars: [CarViewModel] { get }
+    var makeList: [String] { get }
+    var modelList: [String] { get }
     
     func getCarsList()
     func displayDetail(_ section: Int)
+    func filterCarsUsing(make: String)
+    func filterCarsUsing(model: String)
 }
 
 class CarsViewModel: CarsViewModelProtocol {
@@ -20,7 +24,10 @@ class CarsViewModel: CarsViewModelProtocol {
     var loadDataHandler: () -> Void = { }
     
     private let manager: CarsManagerProtocol
-    private(set) var cars: [CarViewModel] = []
+    private var cars: [CarViewModel] = []
+    private(set) var filterdCars: [CarViewModel] = []
+    private(set) var makeList   : [String] = []
+    private(set) var modelList  : [String] = []
 
     init(manager: CarsManagerProtocol) {
         self.manager = manager
@@ -32,9 +39,7 @@ class CarsViewModel: CarsViewModelProtocol {
             
             switch result {
             case .success(let cars):
-                self.cars = cars.map({ CarViewModel(using: $0, isExpanded: false) })
-                self.cars[0].isExpanded = true
-                self.loadDataHandler()
+                self.successDataLoading(cars: cars)
             case .failure(let err):
                 print(err.localizedDescription)
             }
@@ -46,6 +51,39 @@ class CarsViewModel: CarsViewModelProtocol {
             cars[index].isExpanded = index == section
         }
         
+        filterdCars = cars
         loadDataHandler()
+    }
+    
+    func filterCarsUsing(make: String) {
+        if make == "" {
+            filterdCars = cars
+        } else {
+            filterdCars = cars.filter { $0.make.contains(make) }
+        }
+        
+        loadDataHandler()
+    }
+    
+    func filterCarsUsing(model: String) {
+        if model == "" {
+            filterdCars = cars
+        } else {
+            filterdCars = cars.filter { $0.model.contains(model) }
+        }
+        
+        loadDataHandler()
+    }
+    
+    private func successDataLoading(cars: [Car]) {
+        self.cars = cars.map({ CarViewModel(using: $0, isExpanded: false) })
+        self.cars[0].isExpanded = true
+        self.filterdCars = self.cars
+        
+        makeList = cars.map { $0.make }
+        makeList.insert("", at: 0)
+        modelList = cars.map { $0.model }
+        modelList.insert("", at: 0)
+        self.loadDataHandler()
     }
 }

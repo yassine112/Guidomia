@@ -43,6 +43,7 @@ class CarsListViewController: UIViewController {
         tableView.register(UINib(nibName: "CarsListCell", bundle: nil), forCellReuseIdentifier: "CarsListCell")
         tableView.register(UINib(nibName: "CarsSectionHeader", bundle: nil), forHeaderFooterViewReuseIdentifier: "CarsSectionHeader")
         tableView.register(UINib(nibName: "CarsSectionFooter", bundle: nil), forHeaderFooterViewReuseIdentifier: "CarsSectionFooter")
+        tableView.register(UINib(nibName: "TopView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TopView")
         
     }
     
@@ -59,16 +60,20 @@ class CarsListViewController: UIViewController {
 extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.cars.count
+        viewModel.filterdCars.count + 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.cars[section].isExpanded ? 1 : 0
+        if section == 0 {
+            return 0
+        }
+        
+        return viewModel.filterdCars[section - 1].isExpanded ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "CarsListCell", for: indexPath) as? CarsListCell {
-            let car = viewModel.cars[indexPath.section]
+            let car = viewModel.filterdCars[indexPath.section - 1]
             cell.fill(pros: car.prosList, cons: car.consList)
             return  cell
         }
@@ -76,18 +81,31 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionHeader") as? CarsSectionHeader {
-            header.fill(with: viewModel.cars[section]) { [weak self] in
-                self?.viewModel.displayDetail(section)
+        if section == 0 {
+            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TopView") as? TopView {
+                header.fill(makeList: viewModel.makeList, modelList: viewModel.modelList) { make in
+                    self.viewModel.filterCarsUsing(make: make)
+                } modelTFDidChanged: { model in
+                    self.viewModel.filterCarsUsing(model: model)
+                }
+
+
+                return header
             }
-            return header
+        } else {
+            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionHeader") as? CarsSectionHeader {
+                header.fill(with: viewModel.filterdCars[section - 1]) { [weak self] in
+                    self?.viewModel.displayDetail(section - 1)
+                }
+                return header
+            }
         }
         
         return nil
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionFooter") as? CarsSectionFooter {
+        if section != 0, let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CarsSectionFooter") as? CarsSectionFooter {
             return footer
         }
         
@@ -95,6 +113,6 @@ extension CarsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        120
+        return section == 0 ? 390 : 120
     }
 }

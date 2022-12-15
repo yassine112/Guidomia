@@ -22,6 +22,8 @@ struct CarViewModel {
     
     
     let title           : String
+    let make            : String
+    let model           : String
     let price           : String
     let imageName       : String
     var prosList        : String
@@ -36,6 +38,8 @@ struct CarViewModel {
         self.price      = "\(car.marketPrice / 1000)k"
         self.imageName  = car.model
         self.rating     = car.rating
+        self.model      = car.model
+        self.make       = car.make
     
         // TODO: Check back to line, "\n" not working
         
